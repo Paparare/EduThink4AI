@@ -463,15 +463,14 @@ def generate_answer_format(experts_answers):
     return '\n\n'.join(formatted)
 
 
-def call_openai(system_message, user_message, model="gpt-3.5-turbo", temperature=0):
+def call_openai(system_message, user_message, model="gpt-3.5-turbo"):
     """Make an OpenAI API call."""
     response = client.chat.completions.create(
         model=model,
         messages=[
             {"role": "system", "content": system_message},
             {"role": "user", "content": user_message}
-        ],
-        temperature=temperature
+        ]
     )
     return response.choices[0].message.content.strip()
 

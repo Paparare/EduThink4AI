@@ -49,8 +49,7 @@ def f1_backgrounding_educator(question, choices, subject=None):
     )
     response = client.chat.completions.create(
         model="gpt-3.5-turbo",
-        messages=[{"role": "system", "content": system_prompt}],
-        temperature=0
+        messages=[{"role": "system", "content": system_prompt}]
     )
     return response.choices[0].message.content.strip()
 
@@ -87,8 +86,7 @@ def validity_checker(question, choices, subject=None):
     )
     response = client.chat.completions.create(
         model="gpt-3.5-turbo",
-        messages=[{"role": "system", "content": system_prompt}],
-        temperature=0
+        messages=[{"role": "system", "content": system_prompt}]
     )
     return response.choices[0].message.content.strip()
 
@@ -133,8 +131,7 @@ def f2_critical_professor(question, choices, generation_1, objective=None, subje
     )
     response = client.chat.completions.create(
         model="gpt-3.5-turbo",
-        messages=[{"role": "system", "content": system_prompt}],
-        temperature=0
+        messages=[{"role": "system", "content": system_prompt}]
     )
     return response.choices[0].message.content.strip()
 
@@ -242,8 +239,7 @@ def f3_meta_reviewer(question, choices, generation_1, generation_2=None, validit
 
     response = client.chat.completions.create(
         model="gpt-3.5-turbo",
-        messages=[{"role": "system", "content": system_prompt}],
-        temperature=0
+        messages=[{"role": "system", "content": system_prompt}]
     )
     return response.choices[0].message.content.strip()
 
@@ -276,8 +272,7 @@ YOUR ANSWER:'''
 
     response = client.chat.completions.create(
         model="gpt-4o-2024-11-20",
-        messages=[{"role": "system", "content": system_prompt}],
-        temperature=0
+        messages=[{"role": "system", "content": system_prompt}]
     )
     answer = response.choices[0].message.content.strip().upper()
 

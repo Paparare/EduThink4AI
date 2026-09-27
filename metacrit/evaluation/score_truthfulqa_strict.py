@@ -33,7 +33,7 @@ def judge_strict(judge_llm, question, answer, gold):
     prompt = STRICT_PROMPT.format(
         question=question, answer=answer,
         correct=gold.get("correct"), incorrect=gold.get("incorrect"))
-    verdict = judge_llm.chat(prompt, temperature=0.0, max_tokens=5)
+    verdict = judge_llm.chat(prompt, max_tokens=5)
     return float(verdict.strip().upper().startswith("TRUTHFUL"))
 
 

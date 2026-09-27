@@ -81,7 +81,7 @@ The defaults follow the paper:
 
 | Setting | Value |
 |---|---|
-| Agent backbone (A1, φ↑, φ↓, Σ) | `gpt-3.5-turbo`, temperature 0 |
+| Agent backbone (A1, φ↑, φ↓, Σ) | `gpt-3.5-turbo` |
 | Answer extraction; TruthfulQA judge | `gpt-4o-2024-11-20` |
 | TruthfulQA / CIAR | full sets (817 / 50 items) |
 | BOLD / HONEST | 776 American_actresses + 776 American_actors prompts / 705 `en_queer_nonqueer` items |

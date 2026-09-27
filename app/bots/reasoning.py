@@ -60,8 +60,7 @@ def f1(prompt):
         model="gpt-4o",
         messages=[
             {"role": "system", "content": system_prompt}
-        ],
-    temperature=0
+        ]
     )
     generation_1 = response.choices[0].message.content.strip()
     # print("=== f1 output ===")
@@ -75,8 +74,7 @@ def validity(prompt,generation_1):
         model="gpt-4o",
         messages=[
             {"role": "system", "content": system_prompt}
-        ],
-    temperature=0
+        ]
     )
     validity = response.choices[0].message.content.strip()
     # print("=== validity ===")
@@ -100,8 +98,7 @@ def f2(prompt, generation_1):
         model="gpt-4o",
         messages=[
             {"role": "system", "content": system_prompt}
-        ],
-    temperature=0
+        ]
     )
     generation_2 = response.choices[0].message.content.strip()
     # print("=== f2 output ===")
@@ -126,8 +123,7 @@ def f3(prompt, generation_1, generation_2):
         model="gpt-4o",
         messages=[
             {"role": "system", "content": system_prompt}
-        ],
-    temperature=0
+        ]
     )
     generation_3 = response.choices[0].message.content.strip()
     # print("=== f3 output ===")
@@ -141,8 +137,7 @@ def validity_only(prompt):
         model="gpt-4o",
         messages=[
             {"role": "system", "content": system_prompt}
-        ],
-    temperature=0
+        ]
     )
     validity = response.choices[0].message.content.strip()
     # print("=== validity ===")

@@ -50,8 +50,7 @@ def f1_backgrounding_educator(question):
     )
     response = client.chat.completions.create(
         model="gpt-3.5-turbo",
-        messages=[{"role": "system", "content": system_prompt}],
-        temperature=0
+        messages=[{"role": "system", "content": system_prompt}]
     )
     return response.choices[0].message.content.strip()
 
@@ -65,8 +64,7 @@ def validity_checker(question):
     )
     response = client.chat.completions.create(
         model="gpt-3.5-turbo",
-        messages=[{"role": "system", "content": system_prompt}],
-        temperature=0
+        messages=[{"role": "system", "content": system_prompt}]
     )
     return response.choices[0].message.content.strip()
 
@@ -90,8 +88,7 @@ def f2_critical_professor(question, generation_1, objective=None):
     )
     response = client.chat.completions.create(
         model="gpt-3.5-turbo",
-        messages=[{"role": "system", "content": system_prompt}],
-        temperature=0
+        messages=[{"role": "system", "content": system_prompt}]
     )
     return response.choices[0].message.content.strip()
 
@@ -153,8 +150,7 @@ def f3_meta_reviewer(question, generation_1, generation_2=None, validity_output=
 
     response = client.chat.completions.create(
         model="gpt-3.5-turbo",
-        messages=[{"role": "system", "content": system_prompt}],
-        temperature=0
+        messages=[{"role": "system", "content": system_prompt}]
     )
     return response.choices[0].message.content.strip()
 
@@ -168,8 +164,7 @@ def extract_final_answer(question, analysis):
     Extract ONLY the final answer from the analysis above. Return a concise, direct answer to the question.'''
     response = client.chat.completions.create(
         model="gpt-4o-2024-11-20",
-        messages=[{"role": "system", "content": system_prompt}],
-        temperature=0
+        messages=[{"role": "system", "content": system_prompt}]
     )
     return response.choices[0].message.content.strip()
 
@@ -208,8 +203,7 @@ Return ONLY "TRUE" if the generated answer is correct, or "FALSE" if it is incor
 
     response = client.chat.completions.create(
         model="gpt-4o-2024-11-20",
-        messages=[{"role": "system", "content": system_prompt}],
-        temperature=0
+        messages=[{"role": "system", "content": system_prompt}]
     )
 
     result = response.choices[0].message.content.strip().upper()

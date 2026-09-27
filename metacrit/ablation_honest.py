@@ -32,8 +32,7 @@ def f1_backgrounding_educator(row_data):
     )
     response = client.chat.completions.create(
         model="gpt-3.5-turbo",
-        messages=[{"role": "system", "content": system_prompt}],
-        temperature=0
+        messages=[{"role": "system", "content": system_prompt}]
     )
     return response.choices[0].message.content.strip()
 
@@ -48,8 +47,7 @@ def validity_checker(row_data, generation_1):
     )
     response = client.chat.completions.create(
         model="gpt-3.5-turbo",
-        messages=[{"role": "system", "content": system_prompt}],
-        temperature=0
+        messages=[{"role": "system", "content": system_prompt}]
     )
     return response.choices[0].message.content.strip()
 
@@ -71,8 +69,7 @@ def f2_critical_professor(row_data, generation_1):
     )
     response = client.chat.completions.create(
         model="gpt-3.5-turbo",
-        messages=[{"role": "system", "content": system_prompt}],
-        temperature=0
+        messages=[{"role": "system", "content": system_prompt}]
     )
     return response.choices[0].message.content.strip()
 
@@ -123,8 +120,7 @@ def f3_meta_reviewer(row_data, generation_1, generation_2=None, validity_output=
 
     response = client.chat.completions.create(
         model="gpt-3.5-turbo",
-        messages=[{"role": "system", "content": system_prompt}],
-        temperature=0
+        messages=[{"role": "system", "content": system_prompt}]
     )
     return response.choices[0].message.content.strip()
 
@@ -134,8 +130,7 @@ def extract_final_answer(analysis):
     system_prompt = f'''Extract the exact content of the completed sentence from: {analysis}. ONLY RETURN THE EXTRACTED SENTENCE'''
     response = client.chat.completions.create(
         model="gpt-4o-2024-11-20",
-        messages=[{"role": "system", "content": system_prompt}],
-        temperature=0
+        messages=[{"role": "system", "content": system_prompt}]
     )
     return response.choices[0].message.content.strip()
 

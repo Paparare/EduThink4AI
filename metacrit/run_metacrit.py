@@ -54,13 +54,12 @@ class GenericLLM:
             base_url = os.environ.get("OPENAI_BASE_URL")
             self.client = OpenAI(base_url=base_url) if base_url else OpenAI()
 
-    def chat(self, prompt, system=None, temperature=0.0, max_tokens=1024,
+    def chat(self, prompt, system=None, max_tokens=1024,
              retries=5, timeout=120):
         for attempt in range(retries):
             try:
                 if self.provider == "anthropic":
-                    kwargs = dict(model=self.model, max_tokens=max_tokens,
-                                  temperature=temperature, timeout=timeout,
+                    kwargs = dict(model=self.model, max_tokens=max_tokens, timeout=timeout,
                                   messages=[{"role": "user", "content": prompt}])
                     if system:
                         kwargs["system"] = system
@@ -73,8 +72,7 @@ class GenericLLM:
                         messages.append({"role": "system", "content": system})
                     messages.append({"role": "user", "content": prompt})
                     resp = self.client.chat.completions.create(
-                        model=self.model, messages=messages,
-                        temperature=temperature, max_tokens=max_tokens,
+                        model=self.model, messages=messages, max_tokens=max_tokens,
                         timeout=timeout)
                     return (resp.choices[0].message.content or "").strip()
             except Exception as exc:                       # noqa: BLE001
@@ -96,7 +94,7 @@ def f1_backgrounding_educator(llm, question):
         'including definitions of key terms, historical context, relevant theories, and illustrative examples. '
         'Present your explanations with clarity, accuracy, and structure, ensuring they are accessible to a diverse audience.'
     )
-    return llm.chat(prompt, temperature=0, max_tokens=1024)
+    return llm.chat(prompt, max_tokens=1024)
 
 
 def validity_checker(llm, question):
@@ -106,7 +104,7 @@ def validity_checker(llm, question):
         'Answer and explain why: Should or shouldn\'t there be only one possible and objective answer to this question? '
         'In other words, is answer proven by science or facts?'
     )
-    return llm.chat(prompt, temperature=0, max_tokens=512)
+    return llm.chat(prompt, max_tokens=512)
 
 
 def f2_critical_professor(llm, question, generation_1, objective=None):
@@ -125,7 +123,7 @@ def f2_critical_professor(llm, question, generation_1, objective=None):
         'Step 4: include all your examples, findings and arguments as your answer. '
         'Make sure it encompasses all relevant aspects of ambiguity or unfairness.'
     )
-    return llm.chat(prompt, temperature=0, max_tokens=1024)
+    return llm.chat(prompt, max_tokens=1024)
 
 
 def f3_meta_reviewer(llm, question, generation_1, generation_2, validity_output):
@@ -143,7 +141,7 @@ def f3_meta_reviewer(llm, question, generation_1, generation_2, validity_output)
         'Step 5: Combine the facts from Steps 1, 3, and 4.\n'
         'Step 6: Answer the question considering the reasoning above'
     )
-    return llm.chat(prompt, temperature=0, max_tokens=1024)
+    return llm.chat(prompt, max_tokens=1024)
 
 
 # Task-specific final-answer extraction hint (so the extracted answer is parseable).
@@ -165,7 +163,7 @@ def extract_final_answer(judge_llm, question, analysis, task):
     hint = EXTRACT_HINT.get(task, "Return ONLY the final answer.")
     prompt = (f"Question: {question}\n\nAnalysis: {analysis}\n\n"
               f"Extract the final answer from the analysis. {hint}")
-    return judge_llm.chat(prompt, temperature=0, max_tokens=200)
+    return judge_llm.chat(prompt, max_tokens=200)
 
 
 def run_metacrit(llm, judge_llm, record):
