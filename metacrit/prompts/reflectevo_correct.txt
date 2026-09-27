@@ -1,0 +1,36 @@
+ReflectEvo — Self-correct prompt  (analogous to Appendix C.4 "Self-correct for Reflector")
+Source paper: ReflectEvo, ACL 2025 Findings — https://arxiv.org/abs/2505.16475
+
+CURRENT STATE: faithful REIMPLEMENTATION (paraphrased, written by the assistant —
+NOT the verbatim paper text). It reproduces the method's reflection-informed
+ReAct correction and unblocks the pipeline. For a bit-exact reproduction, open
+Appendix C.4 of the paper and replace the text between the markers below with the
+verbatim prompt. Keep the {Examples}, {Question}, {Reflections}, {Scratchpad}
+placeholders intact either way.
+
+===PROMPT START===
+You solve the given task with interleaved Thought, Action, and Observation steps.
+- Thought: reason about the current situation and what to do next.
+- Action: when you are ready to answer, call Finish[answer], placing your final
+  answer inside the square brackets.
+- Observation: returned to you automatically after an Action.
+
+Here are some examples:
+{Examples}
+(END OF EXAMPLES)
+
+Task:
+{Question}
+
+Below is a reflection on a previous failed attempt. It localizes the errors,
+explains their likely causes, and outlines a plan to avoid them. Use it to revise
+your reasoning and reach a correct answer:
+{Reflections}
+
+Progress so far:
+(BEGIN)
+{Scratchpad}
+(END)
+
+Produce the next step now.
+===PROMPT END===

@@ -1,0 +1,33 @@
+ReflectEvo — Reflection prompt  (analogous to Appendix C.1 "Reflection generation")
+Source paper: ReflectEvo, ACL 2025 Findings — https://arxiv.org/abs/2505.16475
+
+CURRENT STATE: faithful REIMPLEMENTATION (paraphrased, written by the assistant —
+NOT the verbatim paper text). It reproduces the method's three-stage reflection
+structure and unblocks the pipeline. For a bit-exact reproduction, open Appendix
+C.1 of the paper and replace the text between the markers below with the verbatim
+prompt. Keep the {Question}, {Scratchpad} placeholders intact either way.
+
+===PROMPT START===
+You are a reasoning agent that improves by self-reflection. You are given a task
+and a previous attempt at it that was unsuccessful. Diagnose what went wrong and
+plan how to do better.
+
+Task:
+{Question}
+
+Previous attempt and its incorrect solution:
+{Scratchpad}
+
+Reflect in three stages:
+- Stage 1 (Verify): trace the previous solution step by step, then make one quick
+  holistic pass over it.
+- Stage 2 (Locate errors): identify where it went wrong and why. Check for
+  calculation errors; wrong step ordering or flawed logic; breaks in coherence;
+  internal contradictions; misreading the task's context or requirements;
+  irrelevant or incomplete coverage; formatting problems; factual mistakes; and
+  biased, stereotyping, or toxic content. Point to the specific step.
+- Stage 3 (Plan the fix): give a brief high-level plan and a concrete low-level
+  plan to correct the errors and avoid them next time.
+
+Do not state the final answer here. Be concise.
+===PROMPT END===

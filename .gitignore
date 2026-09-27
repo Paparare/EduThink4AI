@@ -1,0 +1,30 @@
+# Secrets
+.env
+*.env
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+.ipynb_checkpoints/
+
+# IDE / OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Data and outputs (not redistributed; see data/README.md)
+data/*
+!data/README.md
+results/
+*.bak.*
+*_temp.csv
+*.log
+
+# App runtime files
+app/temp/

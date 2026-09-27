@@ -1,0 +1,14 @@
+# MetaCrit experiments (metacrit/). The user-study app has its own app/requirements.txt.
+openai>=1.40
+anthropic>=0.40        # only for Claude backbones in run_metacrit.py
+pandas>=2.0
+numpy
+datasets>=2.19
+scikit-learn
+tqdm
+matplotlib             # analysis/pattern.py
+# BOLD / HONEST scoring
+torch>=2.1
+transformers>=4.45
+honest                 # MilaNLP HONEST evaluator (ablation_honest.py)
+unidecode
